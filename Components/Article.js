@@ -18,7 +18,8 @@ class Article extends React.Component {
         return(
           <TouchableOpacity 
           style={[styles.main_container]}
-          onPress={() => this.props.navigateTo(url, source.name)}
+          activeOpacity={0.8}
+          onPress={() => this.props.navigateTo(url, source.name, title)}
           >
                 {urlToImage !== null ?<Image 
                   source={{uri: urlToImage}}

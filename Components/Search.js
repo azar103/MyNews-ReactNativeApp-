@@ -6,6 +6,7 @@ import RadioGroup from 'react-native-radio-buttons-group'
 import { getNewsBySearch } from '../API/NewsAPI'
 import Article from '../Components/Article'
 import { ButtonGroup } from 'react-native-elements'
+import { connect } from 'react-redux'
 
 class Search extends React.Component {
     static navigationOptions = ({navigation, navigationOptions}) => {
@@ -54,7 +55,7 @@ class Search extends React.Component {
     _searchArticles = () => {
 
       if(this.state.searchedText.length > 0){
-        getNewsBySearch(this.buttons[this.state.selectedIndex], this.state.searchedText, 100) 
+        getNewsBySearch(this.buttons[this.state.selectedIndex], this.state.searchedText, 100, this.props.countrySelected) 
         .then( data => {
         this.setState({ articles: data.articles })
       })
@@ -130,6 +131,10 @@ const styles = StyleSheet.create({
 
  
 )
+const mapStateToProps = (state) => {
+  return {
+    countrySelected:  state.countrySelected
+  }
+}
 
-
-export default Search
+export default connect(mapStateToProps)(Search)

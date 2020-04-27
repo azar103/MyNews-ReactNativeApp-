@@ -12,7 +12,6 @@ import HealthStack from './HealthStack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import BusinessCategory from '../Components/BusinessCategory';
 import Icon from 'react-native-vector-icons/Ionicons';
-import SettingsStack from './SettingsStack';
 
 const tabs = createBottomTabNavigator(
   {
@@ -91,15 +90,6 @@ const RootDrawerNavigation = createDrawerNavigator(
         drawerLabel: 'Recherche',
         drawerIcon: ({tintColor}) => <Icon name="md-search" size={25} color={tintColor} />,
       },
-    },
-    Settings: {
-      screen: SettingsStack,
-      navigationOptions: {
-        drawerLabel:'Paramétres',
-        drawerIcon: ({tintColor}) => (
-          <Icon name="md-settings" size={25} color={tintColor} />
-        )
-      }
     },
   },
  

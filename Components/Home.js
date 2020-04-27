@@ -3,9 +3,9 @@ import {View, Text, Image, StyleSheet, ActivityIndicator, RefreshControl, Button
 import {TouchableOpacity, FlatList} from 'react-native-gesture-handler';
 import {getNewsByCategory} from '../API/NewsAPI';
 import Article from './Article';
-import { connect } from 'react-redux';
 
-class SportsCategory extends React.Component {
+
+class Home extends React.PureComponent {
 
   //add TooLBar to Header
   static navigationOptions = ({navigation, navigationOptions}) => {
@@ -98,7 +98,7 @@ class SportsCategory extends React.Component {
       }
     )
 
-  getNewsByCategory("general", 100, this.props.countrySelected) 
+  getNewsByCategory("general", 100, "fr") 
   .then(res => 
     {
       this.setState({
@@ -113,27 +113,26 @@ class SportsCategory extends React.Component {
   };
 
 
-  _navigate = (url, source) => {
+  _navigate = (url, source, title) => {
     this.props.navigation.navigate('ArticleDetail', {
       MyUrl: url,
       source: source,
+      title: title
     });
   };
 
 
   onRefresh() {
-    this.setState({isRefreshing: true})
+    this.setState({isRefreshing: !this.state.isRefreshing})
     this._loadArticles()
   }
 
   
   render() {
-    console.log(this.props.countrySelected)
     return (
       <View style={styles.main_container} >
         <FlatList
           keyExtractor={item => item.url}
-          extraData={this.state.articles}
           data={this.state.articles}
           renderItem={({item}) => (
             <Article article={item} navigateTo={this._navigate} />
@@ -144,14 +143,7 @@ class SportsCategory extends React.Component {
               onRefresh={this.onRefresh.bind(this)}
             />
           }
-          onEndReachedThreshold={0.5}
-          onEndReached={
-            () => {
-              if(this.page< this.totalPages){
-                  this._loadArticles()
-              }
-            }
-          }
+          extraData={this.state.articles}
         />
       </View>
     );
@@ -173,9 +165,5 @@ const styles = StyleSheet.create({
   },
   
 });
-const mapStateToProps = (state) => {
-  return {
-    countrySelected: state.countrySelected
-  }
-}
-export default connect(mapStateToProps)(SportsCategory);
+
+export default Home

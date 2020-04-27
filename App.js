@@ -13,6 +13,10 @@ import {MaskedView} from '@react-native-community/masked-view';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import Store from './Store/configureStore'
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+import {ThemeProvider} from 'styled-components';
+import lightTheme from './theme/light';
 class App extends React.Component {
   
   constructor(props){
@@ -20,10 +24,15 @@ class App extends React.Component {
   }
 
   render() {
+    let persistor = persistStore(Store)
     return(
+      <ThemeProvider theme={lightTheme}>
       <Provider store={Store}>
-         <Drawer/>  
+        <PersistGate persistor={persistor}>
+          <Drawer/>  
+        </PersistGate> 
       </Provider>
+      </ThemeProvider> 
     )
   }
 }

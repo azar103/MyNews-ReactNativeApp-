@@ -3,7 +3,7 @@ import {View, Text, Image, StyleSheet, ActivityIndicator, RefreshControl} from '
 import {TouchableOpacity, FlatList} from 'react-native-gesture-handler';
 import {getNewsByCategory} from '../API/NewsAPI';
 import Article from './Article';
-import { connect } from 'react-redux';
+
 
 class HealthCategory extends React.Component {
 
@@ -98,7 +98,7 @@ class HealthCategory extends React.Component {
       })
     }
 
-    getNewsByCategory("health", 100, this.props.countrySelected) 
+    getNewsByCategory("health", 100, "fr") 
       .then(res => 
         {
 
@@ -112,10 +112,11 @@ class HealthCategory extends React.Component {
   };
 
 
-  _navigate = (url, source) => {
+  _navigate = (url, source, title) => {
     this.props.navigation.navigate('ArticleDetail', {
       MyUrl: url,
       source: source,
+      title: title
     });
   };
 
@@ -129,7 +130,7 @@ class HealthCategory extends React.Component {
     return (
       <View style={styles.main_container} >
         <FlatList
-          keyExtractor={item => item.title.toString()}
+          keyExtractor={item => item.url}
           extraData={this.state.articles}
           data={this.state.articles}
           renderItem={({item}) => (
@@ -169,11 +170,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-const mapStateToProps = (state) => {
-  return {
-    countrySelected: state.countrySelected
-  }
-}
 
 
-export default connect(mapStateToProps)(HealthCategory);
+export default HealthCategory;
