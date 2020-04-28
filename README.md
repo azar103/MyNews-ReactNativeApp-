@@ -1,6 +1,6 @@
 # MyNews-ReactNativeApp-
 
-MyNews est une application vous permettant de renouer avec l’actualité. Elle repose sur les articles publiés par le New York Times, ils sont tous récupérés via l’API du New York Times. Il est donc possible de consulter directement les articles dans l’application, et de rechercher les news qui vous intéressent grâce à différents critères
+MyNews est une application vous permettant de renouer avec l’actualité. Elle repose sur les articles français publiés par NewsOrg APi, ils sont tous récupérés via l’API du NewOrg API. Il est donc possible de consulter directement les articles dans l’application, et de rechercher les news qui vous intéressent grâce à différents critères
 
 # Aperçu de l'interface
 
