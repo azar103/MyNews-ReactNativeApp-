@@ -1,7 +1,6 @@
 import {createStackNavigator} from 'react-navigation-stack';
 import Home from '../Components/Home';
 import ArticleDetail from '../Components/ArticleDetail';
-import Notifications from '../Components/Notifications';
 import Search from '../Components/Search';
 
 const HomeStack = createStackNavigator({

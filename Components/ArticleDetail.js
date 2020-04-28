@@ -5,8 +5,6 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import WebView from 'react-native-webview';
 import { View, Share } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { connect } from 'react-redux';
-import { ThemeConsumer } from 'react-native-elements';
 
 
 class ArticleDetail extends React.Component {
@@ -86,4 +84,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(ArticleDetail)
+export default ArticleDetail

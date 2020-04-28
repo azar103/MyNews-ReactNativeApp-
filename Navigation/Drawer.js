@@ -1,7 +1,6 @@
 import React from 'react';
 import {createDrawerNavigator, DrawerSidebar} from 'react-navigation-drawer';
 import {createAppContainer} from 'react-navigation';
-import NotificationsStack from './notificationsStack';
 import customDrawerComponent from './customDrawerComponent';
 import HomeStack from './homeStack';
 import sportsStack from './sportsStack';
@@ -71,16 +70,6 @@ const RootDrawerNavigation = createDrawerNavigator(
       navigationOptions: {
         drawerLabel: 'Acceuil',
         drawerIcon: ({tintColor}) => <Icon name="md-home" size={25} color={tintColor} />,
-      },
-    },
-    Notifications: {
-      screen: NotificationsStack,
-      navigationOptions: {
-        drawerLabel: 'Notifications',
-        drawerIcon: ({tintColor}) => (
-          <Icon name="ios-notifications" size={25} color={tintColor}
-          />
-        ),
       },
     },
     Search: {

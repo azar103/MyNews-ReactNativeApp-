@@ -45,19 +45,6 @@ class SportsCategory extends React.Component {
               }}
             />
           </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('Notifications');
-            }}>
-            <Image
-              source={require('../img/ic_notifications.png')}
-              style={{
-                width: 25,
-                height: 25,
-                marginLeft: 15,
-              }}
-            />
-          </TouchableOpacity>
         </View>
       ),
       headerTitleStyle: {
